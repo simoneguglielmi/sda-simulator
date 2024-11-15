@@ -18,6 +18,12 @@ export const PatchSDASchema = z.object({
   status: z.string(),
 });
 
+export const CreateSDASchema = z.object({
+  businessName: z.string(),
+  progressiveId: z.string(),
+  status: z.string(),
+});
+
 // Input Validation for 'GET users/:id' endpoint
 export const GetSDASchema = z.object({
   params: z.object({ id: commonValidations.id }),

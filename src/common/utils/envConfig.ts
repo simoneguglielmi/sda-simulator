@@ -13,4 +13,5 @@ export const env = cleanEnv(process.env, {
   COMMON_RATE_LIMIT_WINDOW_MS: num({ devDefault: testOnly(1000) }),
   DATABASE_URL: str(),
   DIR_PATH: str({ devDefault: testOnly('/path/to/ftp') }),
+  BASE_ENDPOINT: str({ devDefault: testOnly('/api/v1') }),
 });

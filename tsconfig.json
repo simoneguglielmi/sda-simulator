@@ -18,6 +18,6 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["vitest/globals"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "public"],
   "exclude": ["node_modules"]
 }

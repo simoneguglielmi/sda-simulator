@@ -4,6 +4,8 @@ import { ISDAService } from './interfaces';
 import { inject, injectable } from 'inversify';
 import { PrismaClient } from '@prisma/client';
 import { DI } from './types';
+import { CreateSDASchema } from './models';
+import { z } from 'zod';
 
 @injectable()
 export class SDAService implements ISDAService {
@@ -15,7 +17,7 @@ export class SDAService implements ISDAService {
 
       if (!trackings || trackings.length === 0) {
         return ServiceResponse.failure(
-          'No Users found',
+          'No trackings found',
           [],
           StatusCodes.NOT_FOUND
         );
@@ -71,6 +73,22 @@ export class SDAService implements ISDAService {
     } catch (e) {
       return ServiceResponse.failure(
         'An error occurred while updating tracking.',
+        null,
+        StatusCodes.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  async create(data: z.infer<typeof CreateSDASchema>) {
+    try {
+      const tracking = await this.prisma.itemTracking.create({
+        data,
+      });
+
+      return ServiceResponse.success(tracking);
+    } catch (e) {
+      return ServiceResponse.failure(
+        'An error occurred while creating tracking.',
         null,
         StatusCodes.INTERNAL_SERVER_ERROR
       );

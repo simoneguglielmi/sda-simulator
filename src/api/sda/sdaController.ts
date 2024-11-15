@@ -27,4 +27,9 @@ export class SDAController implements ISDAController {
     const sdaResponse = await this.sdaService.updateStatus(id, status);
     return handleServiceResponse(sdaResponse, res);
   }
+
+  async create(req: Request, res: Response) {
+    const sdaResponse = await this.sdaService.create(req.body);
+    return handleServiceResponse(sdaResponse, res);
+  }
 }

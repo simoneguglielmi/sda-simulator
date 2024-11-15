@@ -12,6 +12,9 @@ container.bind<PrismaClient>(DI.PrismaClient).toConstantValue(prisma);
 
 container.bind<ISDAService>(DI.SDAService).to(SDAService);
 
-container.bind<ISDAController>(DI.SDAController).to(SDAController);
+container
+  .bind<ISDAController>(DI.SDAController)
+  .to(SDAController)
+  .inRequestScope();
 
 export default container;
