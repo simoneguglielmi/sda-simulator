@@ -9,6 +9,7 @@ export interface ISDAService {
     id: string,
     status: string
   ): Promise<ServiceResponse<ItemTracking | null>>;
+  create(data: any): Promise<ServiceResponse<ItemTracking | null>>;
 }
 
 export interface ISDAController {
