@@ -10,6 +10,7 @@ export function checkFTP() {
     ignoreInitial: true, // Ignore files already present when starting
     depth: 0, // Watch only the top-level directory
   }).on('add', (path) => {
+    console.log(`File ${path} has been added`);
     fs.readFile(path, 'utf-8', async (err, data) => {
       if (err) {
         console.error(err);

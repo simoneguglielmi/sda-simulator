@@ -45,8 +45,8 @@ COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/.env .env
 COPY --from=build /usr/src/app/public ./public
 
-# Expose port 8000
-EXPOSE 8000
+# Expose ports 8000
+EXPOSE 8000 
 
 # Start the app
-CMD ["npm", "start"]
+ENTRYPOINT ["npm", "start"]
